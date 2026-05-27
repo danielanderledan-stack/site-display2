@@ -32,7 +32,7 @@ export default function Blog() {
   const ref = useScrollReveal();
 
   return (
-    <section id="blog" ref={ref} style={{ background: '#fff', padding: '90px 30px' }}>
+    <section id="blog" ref={ref} className="section-pad" style={{ background: '#fff', padding: '90px 30px' }}>
       <div className="mx-auto" style={{ maxWidth: 1200 }}>
         {/* Heading */}
         <div className="text-center reveal" style={{ marginBottom: 50 }}>
@@ -43,13 +43,7 @@ export default function Blog() {
         </div>
 
         {/* Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 20,
-          }}
-        >
+        <div className="blog-grid">
           {POSTS.map((post, i) => (
             <article
               key={i}

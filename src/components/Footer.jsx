@@ -10,88 +10,80 @@ const COLS = [
     links: ['Sitemaps', 'Legal Note', 'Privacy & Policy', 'Cookies Info'],
   },
   {
-    heading: 'Privacy and Policies',
+    heading: 'Privacy & Policies',
     links: ['User Choice', 'Transparency', 'Policy Updates', 'Data Retention', 'Full Precautions', 'Informations'],
   },
 ];
+
+function ColHeading({ children }) {
+  return (
+    <h4
+      style={{
+        fontFamily: 'Roboto Slab, serif',
+        fontWeight: 700,
+        fontSize: 13,
+        color: '#1a1a1a',
+        marginBottom: 18,
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+      }}
+    >
+      {children}
+    </h4>
+  );
+}
 
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) setSubmitted(true);
-  };
-
   return (
     <footer>
       {/* Main footer */}
-      <div style={{ background: '#f5f5f5', padding: '70px 30px 50px' }}>
-        <div
-          className="mx-auto"
-          style={{
-            maxWidth: 1200,
-            display: 'grid',
-            gridTemplateColumns: 'auto repeat(3, 1fr) 220px',
-            gap: 40,
-            alignItems: 'start',
-          }}
-        >
+      <div style={{ background: '#f5f5f5', padding: '60px 30px 50px' }}>
+        <div className="mx-auto footer-grid" style={{ maxWidth: 1200 }}>
+
           {/* Logo */}
-          <div>
-            <div style={{ marginBottom: 6 }}>
+          <div className="footer-logo-col">
+            <span
+              style={{
+                fontFamily: 'Roboto Slab, serif',
+                fontWeight: 700,
+                fontSize: 20,
+                color: '#1a1a1a',
+                letterSpacing: 3,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              ELECTR
               <span
                 style={{
-                  fontFamily: 'Roboto Slab, serif',
-                  fontWeight: 700,
-                  fontSize: 20,
-                  color: '#1a1a1a',
-                  letterSpacing: 3,
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 22,
+                  height: 22,
+                  borderRadius: '50%',
+                  border: '2.5px solid #1a1a1a',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  marginLeft: 1,
+                  lineHeight: 1,
                 }}
               >
-                ELECTR
-                <span
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 22,
-                    height: 22,
-                    borderRadius: '50%',
-                    border: '2.5px solid #1a1a1a',
-                    fontSize: 12,
-                    fontWeight: 700,
-                    marginLeft: 1,
-                  }}
-                >
-                  O
-                </span>
+                O
               </span>
-              <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 8, letterSpacing: 4, color: '#888', display: 'block', marginTop: 3 }}>
-                ELECTRICIAN
-              </span>
-            </div>
+            </span>
+            <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 8, letterSpacing: 4, color: '#999', display: 'block', marginTop: 4 }}>
+              ELECTRICIAN
+            </span>
           </div>
 
           {/* Link columns */}
           {COLS.map((col) => (
             <div key={col.heading}>
-              <h4
-                style={{
-                  fontFamily: 'Roboto Slab, serif',
-                  fontWeight: 700,
-                  fontSize: 14,
-                  color: '#1a1a1a',
-                  marginBottom: 16,
-                  textTransform: 'uppercase',
-                  letterSpacing: 0.5,
-                }}
-              >
-                {col.heading}
-              </h4>
+              <ColHeading>{col.heading}</ColHeading>
               {col.links.map((link) => (
                 <a key={link} href="#" className="footer-link">{link}</a>
               ))}
@@ -100,25 +92,13 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4
-              style={{
-                fontFamily: 'Roboto Slab, serif',
-                fontWeight: 700,
-                fontSize: 14,
-                color: '#1a1a1a',
-                marginBottom: 16,
-                textTransform: 'uppercase',
-                letterSpacing: 0.5,
-              }}
-            >
-              Newsletter
-            </h4>
+            <ColHeading>Newsletter</ColHeading>
             {submitted ? (
               <p style={{ fontFamily: 'Roboto', fontSize: 13, color: '#1bd760', fontWeight: 700 }}>
                 Thanks for subscribing!
               </p>
             ) : (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={(e) => { e.preventDefault(); if (email) setSubmitted(true); }}>
                 <input
                   type="email"
                   placeholder="Email Address"
@@ -128,24 +108,24 @@ export default function Footer() {
                   style={{
                     width: '100%',
                     border: 'none',
-                    borderBottom: '1px solid #ccc',
+                    borderBottom: '1.5px solid #ccc',
                     padding: '8px 0',
                     fontFamily: 'Roboto, sans-serif',
                     fontSize: 13,
                     color: '#333',
                     background: 'transparent',
                     outline: 'none',
-                    marginBottom: 14,
+                    marginBottom: 16,
                   }}
                 />
                 <button
                   type="submit"
                   className="btn-yellow"
-                  style={{ width: '100%', justifyContent: 'center', marginBottom: 10 }}
+                  style={{ width: '100%', justifyContent: 'center', marginBottom: 12 }}
                 >
                   Submit
                 </button>
-                <p style={{ fontFamily: 'Roboto', fontSize: 11, color: '#999' }}>
+                <p style={{ fontFamily: 'Roboto', fontSize: 11, color: '#aaa' }}>
                   * Periodic Newsletters
                 </p>
               </form>
@@ -155,18 +135,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div
-        style={{
-          background: '#fff',
-          borderTop: '1px solid #e8e8e8',
-          padding: '18px 30px',
-        }}
-      >
+      <div style={{ background: '#fff', borderTop: '1px solid #e8e8e8', padding: '16px 30px' }}>
         <div
-          className="mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mx-auto flex flex-col sm:flex-row items-center justify-between gap-3"
           style={{ maxWidth: 1200 }}
         >
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-wrap justify-center sm:justify-start">
             {['Home', 'About Us', 'Services'].map((link) => (
               <a
                 key={link}
@@ -185,7 +159,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 12, color: '#999' }}>
+          <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 12, color: '#aaa', textAlign: 'center' }}>
             Electrician Services WordPress Theme
           </p>
         </div>

@@ -2,68 +2,53 @@ import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const IMGS = [
-  {
-    src: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80&fit=crop',
-    alt: 'Electrician installation work',
-    large: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop&crop=center',
-    alt: 'Electrical outlet work',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80&fit=crop&crop=top',
-    alt: 'Circuit breaker panel',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop&crop=bottom',
-    alt: 'Wiring close-up',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=500&q=80&fit=crop&crop=right',
-    alt: 'Light installation',
-  },
+  { src: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80&fit=crop', alt: 'Electrician installation work' },
+  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop&crop=center', alt: 'Electrical outlet work' },
+  { src: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80&fit=crop&crop=top', alt: 'Circuit breaker panel' },
+  { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop&crop=bottom', alt: 'Wiring close-up' },
+  { src: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=500&q=80&fit=crop&crop=right', alt: 'Light installation' },
 ];
 
 export default function Gallery() {
   const ref = useScrollReveal();
 
   return (
-    <section ref={ref} style={{ padding: '0 30px 90px', background: '#fff' }}>
+    <section ref={ref} style={{ padding: '0 0 90px', background: '#fff' }}>
+      {/* Desktop layout: 1 large + 2×2 grid */}
       <div
-        className="mx-auto"
+        className="mx-auto hidden md:grid"
         style={{
-          maxWidth: 1200,
-          display: 'grid',
+          maxWidth: 1260,
           gridTemplateColumns: '2fr 1fr 1fr',
-          gridTemplateRows: '200px 200px',
+          gridTemplateRows: '220px 220px',
           gap: 8,
+          padding: '0 30px',
         }}
       >
-        {/* Large left image */}
-        <div
-          className="blog-card reveal-l"
-          style={{ gridRow: '1 / 3', overflow: 'hidden' }}
-        >
-          <img
-            src={IMGS[0].src}
-            alt={IMGS[0].alt}
-            className="blog-card-img w-full h-full object-cover"
-          />
+        <div className="blog-card reveal-l" style={{ gridRow: '1 / 3', overflow: 'hidden' }}>
+          <img src={IMGS[0].src} alt={IMGS[0].alt} className="blog-card-img w-full h-full object-cover" />
         </div>
-
-        {/* 4 small images */}
         {IMGS.slice(1).map((img, i) => (
+          <div key={i} className="blog-card reveal" style={{ transitionDelay: `${i * 80}ms`, overflow: 'hidden' }}>
+            <img src={img.src} alt={img.alt} className="blog-card-img w-full h-full object-cover" />
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile layout: 2-column grid */}
+      <div className="md:hidden grid grid-cols-2" style={{ gap: 6, padding: '0 16px' }}>
+        {IMGS.map((img, i) => (
           <div
             key={i}
-            className={`blog-card reveal`}
-            style={{ transitionDelay: `${i * 80}ms`, overflow: 'hidden' }}
+            className="blog-card reveal"
+            style={{
+              height: 140,
+              overflow: 'hidden',
+              transitionDelay: `${i * 60}ms`,
+              gridColumn: i === 0 ? '1 / -1' : 'auto',
+            }}
           >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="blog-card-img w-full h-full object-cover"
-            />
+            <img src={img.src} alt={img.alt} className="blog-card-img w-full h-full object-cover" />
           </div>
         ))}
       </div>

@@ -211,9 +211,13 @@ input[type="range"]::-moz-range-thumb {
   color: #555;
   line-height: 2;
   display: block;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 .footer-link:hover { color: #FFD338; }
+
+/* Global link reset */
+a { text-decoration: none; color: inherit; }
 
 /* ── Section headings ── */
 .section-h2 {
@@ -242,3 +246,76 @@ select {
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
+
+/* ── Footer responsive grid ── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.footer-logo-col {
+  grid-column: 1 / -1; /* full width on mobile */
+}
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+  .footer-logo-col {
+    grid-column: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 160px 1fr 1fr 1fr 200px;
+    gap: 40px;
+  }
+}
+
+/* ── Blog responsive grid ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Services icon grid responsive ── */
+.svc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 24px;
+}
+@media (min-width: 768px) {
+  .svc-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Pricing card full-width on mobile ── */
+@media (max-width: 767px) {
+  .pricing-wrap { flex-direction: column; }
+}
+
+/* ── Section padding tightens on mobile ── */
+@media (max-width: 639px) {
+  .section-pad { padding-top: 60px !important; padding-bottom: 60px !important; }
+}
+
+/* ── About image collage ── */
+.about-collage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 220px 180px;
+  gap: 8px;
+}
+@media (max-width: 639px) {
+  .about-collage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 140px;
+  }
+  .about-collage img:first-child {
+    grid-row: auto;
+  }
+}

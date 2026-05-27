@@ -96,15 +96,8 @@ export default function About() {
         </div>
 
         {/* Right image collage */}
-        <div className="flex-1 reveal-r" style={{ maxWidth: 580 }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '2fr 1fr',
-              gridTemplateRows: '220px 180px',
-              gap: 8,
-            }}
-          >
+        <div className="flex-1 reveal-r w-full" style={{ maxWidth: 580 }}>
+          <div className="about-collage">
             <img
               src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&q=80"
               alt="Electrician smiling"

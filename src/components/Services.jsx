@@ -108,13 +108,7 @@ export default function Services() {
 
         {/* Right grid */}
         <div className="lg:w-7/12">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '40px 30px',
-            }}
-          >
+          <div className="svc-grid">
             {SERVICES.map((s, i) => (
               <div
                 key={s.title}

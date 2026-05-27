@@ -8,11 +8,11 @@ export default function ContactCTA() {
     <section
       id="contact"
       ref={ref}
-      className="circuit-bg"
+      className="circuit-bg section-pad"
       style={{ padding: '70px 30px' }}
     >
       <div
-        className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-10"
+        className="mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left"
         style={{ maxWidth: 1200 }}
       >
         {/* Text */}
@@ -21,21 +21,21 @@ export default function ContactCTA() {
             style={{
               fontFamily: 'Roboto Slab, serif',
               fontWeight: 800,
-              fontSize: 'clamp(28px, 4vw, 52px)',
+              fontSize: 'clamp(26px, 4vw, 50px)',
               color: '#fff',
-              marginBottom: 10,
+              marginBottom: 8,
               lineHeight: 1.1,
             }}
           >
-            Get in Touch Now !
+            Get in Touch Now!
           </h2>
-          <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, color: '#aaa' }}>
+          <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 14, color: '#999', letterSpacing: 0.3 }}>
             Power Up Your Home with us
           </p>
         </div>
 
         {/* Button */}
-        <div className="reveal-r">
+        <div className="reveal-r flex-shrink-0">
           <button className="btn-yellow" style={{ fontSize: 14, padding: '15px 36px' }}>
             Contact Us
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
